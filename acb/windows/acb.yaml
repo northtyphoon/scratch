@@ -1,0 +1,4 @@
+version: 0.0.1
+steps:
+ - cmd: docker ps
+ - cmd: docker image inspect microsoft/windowsservercore:1803
