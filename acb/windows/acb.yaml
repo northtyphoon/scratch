@@ -4,3 +4,7 @@ steps:
    isolation: default
  - cmd: docker image inspect mcr.microsoft.com/windows/servercore:ltsc2019
    isolation: default
+ - cmd: docker image inspect acb
+   isolation: default
+ - cmd: docker image inspect docker
+   isolation: default
