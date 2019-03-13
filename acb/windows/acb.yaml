@@ -1,4 +1,6 @@
 version: 0.0.1
 steps:
- - cmd: docker ps
- - cmd: docker image inspect microsoft/windowsservercore:1803
+ - cmd: docker images
+   isolation: default
+ - cmd: docker image inspect mcr.microsoft.com/windows/servercore:ltsc2019
+   isolation: default

@@ -1,0 +1,5 @@
+version: 0.0.1
+steps:
+ - cmd: |
+     mcr.microsoft.com/windows/servercore:ltsc2019 powershell gci env:
+   isolation: default
