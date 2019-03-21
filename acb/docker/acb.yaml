@@ -1,4 +1,5 @@
-version: 0.0.1
+version: v1.0.0
+
 steps:
  - cmd: docker run ubuntu /bin/sh -c "echo non-privileged && ls /dev -al"
  - cmd: docker run --privileged ubuntu /bin/sh -c "echo privileged && ls /dev -al"

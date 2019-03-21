@@ -1,16 +1,16 @@
-version: 1.0.0
+version: v1.0.0
 
 steps:
-- cmd: | 
+- cmd: |
     bash -c 'echo "FROM arm32v6/alpine:3.5
     RUN uname -a
     RUN uname -m" > dockerfile.arm32'
-- cmd: | 
+- cmd: |
     bash -c 'echo "FROM alpine:3.5
     RUN uname -a
     RUN uname -m" > dockerfile.amd64'
-- build: -t {{.Run.Registry}}/multi-arch:arm32 -f dockerfile.arm32 . 
-- build: -t {{.Run.Registry}}/multi-arch:amd64 -f dockerfile.amd64 . 
+- build: -t {{.Run.Registry}}/multi-arch:arm32 -f dockerfile.arm32 .
+- build: -t {{.Run.Registry}}/multi-arch:amd64 -f dockerfile.amd64 .
 - cmd: docker push {{.Run.Registry}}/multi-arch:amd64
 - cmd: docker push {{.Run.Registry}}/multi-arch:arm32
 - cmd: >

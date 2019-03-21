@@ -1,0 +1,5 @@
+version: v1.0.0
+
+steps:
+ - build: .
+   env: ["DOCKER_BUILDKIT=1"]

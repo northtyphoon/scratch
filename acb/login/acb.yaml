@@ -1,4 +1,5 @@
-version: 0.0.1
+version: v1.0.0
+
 steps:
  - build: >
     -t binduregistry.azurecr.io/login:{{.Run.ID}}
