@@ -6,18 +6,32 @@ import (
 )
 
 func TestCurl(t *testing.T) {
-	curls := []Curl{
-		&getCurl{
-			url: "https://httpbin.org/get",
+	tests := []struct{
+		curl Curl
+		completed chan error
+	}{
+		{
+			&getCurl{
+				url: "https://httpbin.org/get",
+			},
+			make(chan error),
 		},
-		&postCurl{
-			url: "https://httpbin.org/post",
-			data: quote.Glass(),
+		{
+			&postCurl{
+				url: "https://httpbin.org/post",
+				data: quote.Glass(),
+			},
+			make(chan error),
 		},
 	}
 
-	for _, curl := range curls {
-		if err := curl.Test(); err != nil {
+	for _, test := range tests {
+		go test.curl.Test(test.completed)
+	}
+
+	for _, test := range tests {
+		err := <- test.completed
+		if err != nil {
 			t.Error(err)
 		}
 	}
