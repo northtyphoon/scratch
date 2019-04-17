@@ -1,0 +1,4 @@
+version: v1.0.0
+
+steps:
+ - build: --cpuset-cpus=0 .
