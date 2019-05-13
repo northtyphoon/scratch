@@ -1,0 +1,21 @@
+version: v1.0.0
+steps:
+  # docker login with service principal
+  - cmd: docker login {{.Values.REGISTRY}} -u {{.Values.REGISTRY_USER}} -p {{.Values.REGISTRY_PASSWORD}}
+  # load signing key
+  # need to save the key to .docker/trust/private folder first and make it read-write only for current user
+  - cmd: bash -c 'mkdir -p $HOME/.docker/trust/private'
+  - cmd: |
+      bash -c 'echo "-----BEGIN ENCRYPTED PRIVATE KEY-----
+      {{.Values.SIGNING_KEY_CONTENT | indent 6}}
+      -----END ENCRYPTED PRIVATE KEY-----" > $HOME/.docker/trust/private/{{.Values.SIGNING_KEY_NAME}}'
+  - cmd: bash -c 'chmod 600 $HOME/.docker/trust/private/{{.Values.SIGNING_KEY_NAME}}'
+  - cmd: docker trust key load $HOME/.docker/trust/private/{{.Values.SIGNING_KEY_NAME}}
+    env:
+     - DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE={{.Values.SIGNING_KEY_PASSPHRASE}}
+  # build and push an image with content trust enabled
+  - cmd: bash -c 'echo "FROM bash" > Dockerfile'
+  - cmd: docker build -t {{.Values.REGISTRY}}/bash:{{.Run.ID}} .
+  - cmd: docker push --disable-content-trust=false {{.Values.REGISTRY}}/bash:{{.Run.ID}}
+    env:
+     - DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE={{.Values.SIGNING_KEY_PASSPHRASE}}
