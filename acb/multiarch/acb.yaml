@@ -1,0 +1,25 @@
+version: v1.0.0
+steps:
+  - build: --platform linux/arm64 -t {{.Run.Registry}}/multiarchtest:arm64 --pull .
+  - push:
+    - {{.Run.Registry}}/multiarchtest:arm64
+
+  - build: --platform linux/arm64/v8 -t {{.Run.Registry}}/multiarchtest:arm64v8 --pull .
+  - push:
+    - {{.Run.Registry}}/multiarchtest:arm64
+
+  - build: --platform linux/386 -t {{.Run.Registry}}/multiarchtest:386 --pull .
+  - push:
+    - {{.Run.Registry}}/multiarchtest:386
+
+  - build: --platform linux/arm/v7 -t {{.Run.Registry}}/multiarchtest:armv7 --pull .
+  - push:
+    - {{.Run.Registry}}/multiarchtest:armv7
+
+  - build: --platform linux/amd64 -t {{.Run.Registry}}/multiarchtest:amd64 --pull .
+  - push:
+    - {{.Run.Registry}}/multiarchtest:amd64
+
+  - build: --platform linux/ppc64le -t {{.Run.Registry}}/multiarchtest:ppc64le --pull .
+  - push:
+    - {{.Run.Registry}}/multiarchtest:ppc64le
