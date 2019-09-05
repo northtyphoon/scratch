@@ -1,0 +1,4 @@
+version: v1.0.0
+steps:
+  - cmd: bash -c 'pwd'
+  - cmd: bash -c 'echo $HOME'
