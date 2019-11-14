@@ -1,0 +1,9 @@
+version: v1.1.0
+alias:
+  values:
+    teleport : "orca run --mount type=bind,options=rbind:rw,source=/var/lib/docker/volumes/{{.Run.SharedVolume}}/_data,destination=/workspace --mount type=bind,options=rbind:rw,source=/var/lib/docker/volumes/home/_data,destination=/home --cwd /workspace --env HOME=/home"
+steps:
+  - cmd: teleport $Registry/bash -c 'ls -al .'
+  - cmd: teleport $Registry/bash -c 'ls -al ~'
+  - cmd: teleport $Registry/bash -c 'echo something > ~/test'
+  - cmd: teleport $Registry/bash -c 'cat ~/test'
