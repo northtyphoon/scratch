@@ -1,4 +1,4 @@
-version: v1.0.0
+version: v1.1.0
 steps:
   # docker login with service principal
   - cmd: docker login {{.Values.REGISTRY}} -u {{.Values.REGISTRY_USER}} -p {{.Values.REGISTRY_PASSWORD}}
