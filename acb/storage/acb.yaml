@@ -1,0 +1,16 @@
+version: v1.1.0
+
+alias:
+  values:
+    account: {{.Values.account}}
+
+env:
+  - AZURE_STORAGE_ACCOUNT=$account
+  - AZURE_STORAGE_AUTH_MODE=login
+
+steps:
+  - cmd: az login --identity
+  - cmd: az storage container create --name $ID -o table
+  - cmd: az storage container list -o table
+  - cmd: az storage container delete --name $ID -o table
+  - cmd: az storage container list -o table
