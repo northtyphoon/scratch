@@ -1,4 +1,6 @@
 version: v1.1.0
+
 steps:
   - cmd: bash -c 'pwd'
   - cmd: bash -c 'echo $HOME'
+  - cmd: bash -c 'cat $HOME/.docker/config.json'
