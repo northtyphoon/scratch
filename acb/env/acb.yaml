@@ -1,0 +1,11 @@
+version: v1.1.0
+
+steps:
+ - cmd: |
+    bash -c 'echo $env1 | base64 -d >> env.file \
+            && echo $env2 | base64 -d >> env.file \
+            && echo "" >> env.file \
+            && cat env.file'
+   env:
+    - env1={{.Values.env1 | b64enc}}
+    - env2={{.Values.env2 | b64enc}}
