@@ -1,11 +1,14 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+ARG BaseImgae=mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim
+ARG BuildImage=mcr.microsoft.com/dotnet/core/sdk:3.1-buster
+
+FROM ${BaseImgae} AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+FROM ${BuildImage} AS build
 WORKDIR /src
 COPY ["TestServer.csproj", ""]
 RUN dotnet restore "./TestServer.csproj"
