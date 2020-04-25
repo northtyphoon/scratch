@@ -1,0 +1,6 @@
+version: v1.1.0
+
+steps:
+ - cmd: |
+     mcr.microsoft.com/windows/servercore:{{.Run.OSVersion}} powershell write-host {{.Values.Test}}
+   isolation: default
