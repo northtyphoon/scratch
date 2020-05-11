@@ -1,0 +1,6 @@
+version: v1.1.0
+
+steps:
+  - build: . -t $Registry/speedtest:latest
+  - push:
+    - $Registry/speedtest:latest
