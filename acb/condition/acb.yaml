@@ -1,0 +1,8 @@
+version: v1.1.0
+
+steps:
+{{ if eq (default "" .Values.Command) "mycommand" }}
+ - cmd: bash echo "mycommand"
+{{ else }}
+ - cmd: bash echo "othercommand"
+{{ end }}
