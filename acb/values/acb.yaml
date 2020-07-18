@@ -2,6 +2,6 @@ version: v1.1.0
 
 steps:
  # print out all variables
- - cmd: base -c 'echo {{ printf "%#v" . }}'
+ - cmd: bash -c 'echo {{ printf "%#v" . }}'
  # print out all Values in json format
  - cmd: bash -c 'echo {{ .ValuesJSON }}'

@@ -1,0 +1,7 @@
+version: v1.1.0
+
+steps:
+# print out all Run values in json format
+ - cmd: |
+     mcr.microsoft.com/windows/servercore:{{.Run.OSVersion}} powershell write-host {{.RunJSON}}
+   isolation: default
