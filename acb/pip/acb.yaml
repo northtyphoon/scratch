@@ -1,10 +1,10 @@
 version: v1.1.0
 steps:
-  - build: --platform linux/amd64 -t {{.Run.Registry}}/pip:amd64 --pull .
+  - build: --platform linux/amd64 -t $Registry/pip:amd64 --pull .
   - push:
     - $Registry/pip:amd64
 
-  - build: --platform linux/arm/v7 -t {{.Run.Registry}}/pip:arm --pull .
+  - build: --platform linux/arm/v7 -t $Registry/pip:arm --pull .
     timeout: 10800
   - push:
     - $Registry/pip:arm

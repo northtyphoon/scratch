@@ -1,29 +1,29 @@
 version: v1.1.0
 steps:
-  - build: --platform linux/arm64 -t {{.Run.Registry}}/multiarchtest:arm64 --pull .
+  - build: --platform linux/arm64 -t $Registry/multiarchtest:arm64 --pull .
   - push:
     - $Registry/multiarchtest:arm64
 
-  - build: --platform linux/arm64/v8 -t {{.Run.Registry}}/multiarchtest:arm64v8 --pull .
+  - build: --platform linux/arm64/v8 -t $Registry/multiarchtest:arm64v8 --pull .
   - push:
     - $Registry/multiarchtest:arm64
 
-  - build: --platform linux/386 -t {{.Run.Registry}}/multiarchtest:386 --pull .
+  - build: --platform linux/386 -t $Registry/multiarchtest:386 --pull .
   - push:
     - $Registry/multiarchtest:386
 
-  - build: --platform linux/arm/v7 -t {{.Run.Registry}}/multiarchtest:armv7 --pull .
+  - build: --platform linux/arm/v7 -t $Registry/multiarchtest:armv7 --pull .
   - push:
     - $Registry/multiarchtest:armv7
 
-  - build: --platform linux/amd64 -t {{.Run.Registry}}/multiarchtest:amd64 --pull .
+  - build: --platform linux/amd64 -t $Registry/multiarchtest:amd64 --pull .
   - push:
     - $Registry/multiarchtest:amd64
 
-  - build: --platform linux/ppc64le -t {{.Run.Registry}}/multiarchtest:ppc64le --pull .
+  - build: --platform linux/ppc64le -t $Registry/multiarchtest:ppc64le --pull .
   - push:
     - $Registry/multiarchtest:ppc64le
     
-  - build: --platform linux/s390x -t {{.Run.Registry}}/multiarchtest:s390x --pull .
+  - build: --platform linux/s390x -t $Registry/multiarchtest:s390x --pull .
   - push:
     - $Registry/multiarchtest:s390x
