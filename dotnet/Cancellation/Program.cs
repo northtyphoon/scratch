@@ -10,6 +10,7 @@ var cts = new CancellationTokenSource();
 
 var task = CreateTask(cts.Token);
 
+// After creating the task, immediately cancel it.
 cts.Cancel();
 
 try
