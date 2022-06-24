@@ -1,0 +1,4 @@
+version: v1.1.0
+
+steps:
+ - cmd: acr purge --keep 1 --dry-run --ago 7d --concurrency 1 --filter ".+:.*-?local[.].+"
