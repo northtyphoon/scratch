@@ -5,10 +5,10 @@ type Metrics struct {
 	SucceededCode int
 }
 
-type MethodName string
+type MethodName = string
 
 type MethodMap map[MethodName]Metrics
 
-type RouteName string
+type RouteName = string
 
 type RouteMap map[RouteName]MethodMap

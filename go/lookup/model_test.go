@@ -17,8 +17,8 @@ func TestLookupModel(t *testing.T) {
 	}
 
 	tests := []struct {
-		route  RouteName
-		method MethodName
+		route  string
+		method string
 	}{
 		{
 			"route1",
