@@ -6,7 +6,6 @@ steps:
   - cmd: bash -c 'cat ./artifact.txt'
   # push artifact.txt from current working folder
   - cmd: |
-      ghcr.io/oras-project/oras:v0.12.0 push \
+      ghcr.io/oras-project/oras:v1.1.0 push \
       {{.Run.Registry}}/samples/artifact:1.0 \
-      --manifest-config /dev/null:application/vnd.unknown.config.v1+json \
-      ./artifact.txt:application/vnd.unknown.layer.v1+txt
+      ./artifact.txt:application/vnd.me.artifact
