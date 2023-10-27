@@ -1,0 +1,9 @@
+version: v1.1.0
+
+steps:
+
+  - cmd: -v data-volume:/data bash -c 'ls -al /data/ && echo hello-world > /data/myfile'
+
+  - cmd: -v data-volume:/data bash cat /data/myfile
+
+  - cmd: docker volume ls
