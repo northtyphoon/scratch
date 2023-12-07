@@ -1,0 +1,8 @@
+version: v1.1.0
+steps:
+  - cmd: docker build --platform linux/arm64 .
+    env: ["DOCKER_BUILDKIT=1"]
+
+  - cmd: docker build --platform linux/amd64 .
+    env: ["DOCKER_BUILDKIT=1"]
+    
