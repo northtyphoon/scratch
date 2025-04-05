@@ -1,0 +1,5 @@
+version: v1.1.0
+steps:
+ - build: -t $Registry/tools:latest .
+ - push:
+     - $Registry/tools:latest
