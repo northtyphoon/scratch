@@ -3,5 +3,8 @@ version: v1.1.0
 steps:
 # print out all Run values in json format
  - cmd: |
-     mcr.microsoft.com/windows/servercore:{{.Run.OSVersion}} powershell write-host {{.RunJSON}}
+     mcr.microsoft.com/windows/servercore:ltsc{{.Run.OSVersion}} powershell write-host "{{.RunJSON}}"
    isolation: default
+
+ - cmd: |
+     mcr.microsoft.com/windows/servercore:ltsc{{.Run.OSVersion}} powershell write-host "{{range $k,$v:=.Values}}{{$k}}:{{$v}}~{{end}} {{range $k,$v:=.Run}}{{$k}}:{{$v}}~{{end}}"
